@@ -1,4 +1,4 @@
-package com.longosz.cinema.movie;
+package com.longosz.cinema.movie.handling;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

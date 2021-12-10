@@ -1,9 +1,11 @@
-package com.longosz.cinema.movie;
+package com.longosz.cinema.movie.domain;
 
+//import io.swagger.annotations.ApiModel;
 import lombok.Value;
 
 import java.util.List;
 
+//@ApiModel("Personal data of Movie")
 @Value
 public class Movie {
 

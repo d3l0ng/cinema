@@ -1,4 +1,4 @@
-package com.longosz.cinema.movie;
+package com.longosz.cinema.movie.handling;
 
 class MovieNotFoundException extends RuntimeException {
 
