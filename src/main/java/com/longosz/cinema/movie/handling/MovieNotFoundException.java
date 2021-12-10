@@ -1,8 +1,8 @@
 package com.longosz.cinema.movie.handling;
 
-class MovieNotFoundException extends RuntimeException {
+public class MovieNotFoundException extends RuntimeException {
 
-  MovieNotFoundException(Long id) {
+  public MovieNotFoundException(String id) {
     super("Could not find movie " + id);
   }
 }
