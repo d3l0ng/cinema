@@ -34,6 +34,15 @@
             <optional>true</optional>
             <version>1.18.22</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
     </dependencies>
 
     <!--	<properties>-->
@@ -106,17 +115,17 @@
     <!--		</dependency>-->
     <!--	</dependencies>-->
 
-    <!--&lt;!&ndash;	<dependencyManagement>&ndash;&gt;-->
-    <!--&lt;!&ndash;		<dependencies>&ndash;&gt;-->
-    <!--&lt;!&ndash;			<dependency>&ndash;&gt;-->
-    <!--&lt;!&ndash;				<groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
-    <!--&lt;!&ndash;				<artifactId>spring-cloud-dependencies</artifactId>&ndash;&gt;-->
-    <!--&lt;!&ndash;				<version>${spring-cloud.version}</version>&ndash;&gt;-->
-    <!--&lt;!&ndash;				<type>pom</type>&ndash;&gt;-->
-    <!--&lt;!&ndash;				<scope>import</scope>&ndash;&gt;-->
-    <!--&lt;!&ndash;			</dependency>&ndash;&gt;-->
-    <!--&lt;!&ndash;		</dependencies>&ndash;&gt;-->
-    <!--&lt;!&ndash;	</dependencyManagement>&ndash;&gt;-->
+    	<dependencyManagement>
+    		<dependencies>
+    			<dependency>
+    				<groupId>org.springframework.cloud</groupId>
+    				<artifactId>spring-cloud-dependencies</artifactId>
+    				<version>2020.0.1</version>
+    				<type>pom</type>
+    				<scope>import</scope>
+    			</dependency>
+    		</dependencies>
+    	</dependencyManagement>
 
     <!--	<build>-->
     <!--		<plugins>-->

@@ -7,3 +7,9 @@ set env variable: omdb.token=[token]
 to login in browser on localhost:8080 provide 
 username: user
 password: [generated visible in application logs: 'Using generated security password']
+
+
+# follow-up
+* security
+  * load authorized users from DB / service / LDAP
+  * use JWT
