@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/admin/screenings")
@@ -28,10 +29,21 @@ public class AdminScreeningsController {
             @ApiResponse(responseCode = "200", description = "Screenings were saved in database"),
             @ApiResponse(responseCode = "500", description = "Something went wrong, screenings were not saved")
     })
-    @PutMapping
-    void fullCatalog(@RequestParam ScreeningSaveRequest screening) {
-        log.info("Saving information on screening: {}", screening);
+    @PostMapping
+    void addScreening(@ModelAttribute ScreeningSaveRequest screening) {
+        log.info("Adding information on screening: {}", screening);
 
+        LocalDateTime showTime = LocalDateTime.parse(screening.showTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME); // TODO e.g. 2021-01-01T12:30:22
+        log.info("show time: {}", showTime);
+        // TODO
+    }
+
+    @PutMapping("/{screeningId}")
+    void editScreening(@PathVariable int screeningId, @ModelAttribute ScreeningSaveRequest screening) {
+        log.info("Editing information on screening {}:  {}", screeningId, screening);
+
+        LocalDateTime showTime = LocalDateTime.parse(screening.showTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        log.info("show time: {}", showTime);
         // TODO
     }
 
@@ -55,7 +67,7 @@ public class AdminScreeningsController {
     @Value
     private static class ScreeningSaveRequest {
         String movieId;
-        LocalDateTime showTime;
+        String showTime;
         BigDecimal ticketPrice;
     }
 }

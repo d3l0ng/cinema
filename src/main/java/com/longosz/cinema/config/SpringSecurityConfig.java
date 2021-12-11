@@ -29,6 +29,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll()
                 .and()
+                .csrf().disable() // TODO in prod this needs to be handled
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
         ;
     }

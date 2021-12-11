@@ -1,7 +1,5 @@
 package com.longosz.cinema.movie.domain;
 
-//import io.swagger.annotations.ApiModel;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,8 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
-//@ApiModel("Personal data of Movie")
-//@Value
 @Entity
 @Table(name = "movies")
 @Data
