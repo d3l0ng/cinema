@@ -1,10 +1,14 @@
 package com.longosz.cinema.movie.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "screenings")
@@ -13,13 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Screening {
-    @Id
-    @GeneratedValue
-    Integer id;
-
-    @ManyToOne
-    @JoinColumn(name="movieId")
-    Movie movie;
-    LocalDateTime showTime;
+    @EmbeddedId
+    ScreeningId id;
     BigDecimal ticketPrice;
 }

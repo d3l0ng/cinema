@@ -1,8 +1,12 @@
 package com.longosz.cinema.movie.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,6 +18,10 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class ClientFeedback {
     @Id
+    @GeneratedValue
+    Integer id;
+
     String movieId;
     int stars;
+    String description;
 }
