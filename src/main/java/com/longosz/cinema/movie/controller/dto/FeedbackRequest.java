@@ -1,6 +1,7 @@
-package com.longosz.cinema.movie.dto;
+package com.longosz.cinema.movie.controller.dto;
 
 import com.longosz.cinema.movie.domain.ClientFeedback;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.Value;
@@ -16,6 +17,10 @@ public class FeedbackRequest {
     @NotNull
     String movieId;
 
+    @ApiModelProperty(
+            value = "User movie rating in stars, allowed values 1-5",
+            dataType = "int",
+            example = "2")
     @Min(1)
     @Max(5)
     int stars;

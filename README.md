@@ -1,9 +1,14 @@
 # running
-set env variable with run parameters: omdb.token=[token]
+Tested with running inside intellij IDE and using swagger for rest: 
+* set env variable with run parameters: omdb.token=[token]
 
-login in browser on http://localhost:8080/swagger-ui/index.html with e.g.
+* login in browser on http://localhost:8080/swagger-ui/index.html as user
 username: user
 password: user123
+
+* or as admin:
+username: admin
+password: admin123
 
 
 # choices

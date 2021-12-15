@@ -1,4 +1,4 @@
-package com.longosz.cinema.movie.dto;
+package com.longosz.cinema.movie.controller.dto;
 
 import com.longosz.cinema.movie.domain.ClientFeedback;
 import lombok.*;
