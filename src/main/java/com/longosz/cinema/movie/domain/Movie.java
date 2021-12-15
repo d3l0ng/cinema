@@ -19,7 +19,7 @@ public class Movie {
     @Id
     String imdbID;
 
-    String Title;
+    String Title;   // TODO change to camelCase, use jackson to parse omdb api
     int Year;
     String Rated;
 
