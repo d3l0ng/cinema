@@ -1,0 +1,4 @@
+omdbi.token: testToken
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateAutoConfiguration
