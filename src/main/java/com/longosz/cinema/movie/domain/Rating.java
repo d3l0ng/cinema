@@ -9,10 +9,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ratings")
-@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Value
+@NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Rating {
     @Id
     @GeneratedValue

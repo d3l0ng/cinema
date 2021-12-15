@@ -1,21 +1,23 @@
 package com.longosz.cinema.movie;
 
+import com.longosz.cinema.movie.dao.ClientFeedbackRepository;
+import com.longosz.cinema.movie.dao.MovieRepository;
 import com.longosz.cinema.movie.domain.ClientFeedback;
 import com.longosz.cinema.movie.domain.Movie;
-import com.longosz.cinema.movie.domain.Screening;
+import com.longosz.cinema.movie.handling.MovieNotFoundException;
 import com.longosz.cinema.ombdb.OmdbClient;
+import com.longosz.cinema.screening.dao.ScreeningsRepository;
+import com.longosz.cinema.screening.domain.Screening;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Set;
 
 @Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 @Transactional
 public class MoviesService {
 
@@ -26,33 +28,17 @@ public class MoviesService {
     @Value("${omdbi.token}")
     private final String omdbiToken;
 
-    private static final Set<String> AVAILABLE_MOVIES = Set.of(
-            "tt0232500",
-            "tt0322259",
-            "tt0463985",
-            "tt1013752",
-            "tt1596343",
-            "tt1905041",
-            "tt2820852",
-            "tt4630562",
-            "tt5433138"
-    );
-
-    @PostConstruct
-    @Transactional
-    public void setupScreenings() {
-        AVAILABLE_MOVIES.stream()
-                .map(omdbId -> omdbClient.getMovieDetails(omdbiToken, omdbId))
-                .forEach(movieRepository::save);
-    }
-
-
     public Movie getMovieDetails(String movieId) {
         if(movieRepository.existsById(movieId)) {
             return movieRepository.getOne(movieId);
         }
 
-        return omdbClient.getMovieDetails(omdbiToken, movieId);
+        Movie omdbMovie = omdbClient.getMovieDetails(omdbiToken, movieId);
+        if(omdbMovie == null || StringUtils.isBlank(omdbMovie.getTitle())) {
+            throw new MovieNotFoundException(movieId);
+        }
+        movieRepository.save(omdbMovie);
+        return omdbMovie;
     }
 
     public void saveClientFeedback(ClientFeedback toClientFeedback) {

@@ -1,9 +1,6 @@
 package com.longosz.cinema.movie.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,10 +10,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "movies")
-@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Value
+@NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Movie {
 
     @Id

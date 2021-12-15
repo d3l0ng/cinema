@@ -1,9 +1,6 @@
-package com.longosz.cinema.movie.domain;
+package com.longosz.cinema.screening.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -12,10 +9,10 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "screenings")
-@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Value
+@NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Screening {
     @EmbeddedId
     ScreeningId id;
